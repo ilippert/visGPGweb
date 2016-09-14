@@ -3,6 +3,45 @@ clear
 
 echo -e '\n'"Ingmar Lippert's (2016) (c) script for visualising partial GPG Web of Trust " '\n' ;
 
+        echo "starting testing;"
+if hash neato 2>/dev/null; then
+        echo "."
+    else
+        echo "I require neato but it's not installed.  Aborting."; exit;
+    fi
+if hash springgraph 2>/dev/null; then
+        echo "."
+    else
+        echo "I require springgraph but it's not installed.  Aborting."; exit;
+    fi
+if hash paplay 2>/dev/null; then
+        echo "."
+    else
+        echo "I require paplay but it's not installed.  Aborting."; exit;
+    fi
+if hash paplay 2>/dev/null; then
+        echo "."
+    else
+        echo "I require paplay but it's not installed.  Aborting."; exit;
+    fi
+if hash gpg 2>/dev/null; then
+        echo "."
+    else
+        echo "I require gpg but it's not installed.  Aborting."; exit;
+    fi
+if hash sig2dot 2>/dev/null; then
+        echo "."
+    else
+        echo "I require sig2dot but it's not installed.  Aborting."; exit;
+    fi
+if hash convert 2>/dev/null; then
+        echo "."
+    else
+        echo "I require convert but it's not installed.  Aborting."; exit;
+    fi
+
+
+
 date=`date "+%Y-%m-%d--%H_%M_%S"`
 
 
@@ -73,7 +112,7 @@ neato -Tps keyring-$date.dot > keyring-$date.$visualsoftware.ps
 
 
 #converting file
-convert keyring-$date.$visualsoftware.ps keyring-$date.$visualsoftware.pdf
+convert -pointsize 15 -fill gray -draw "text 5,25 'Web of Trust'"  -pointsize 22 -fill black -draw "text 5,80 $scope" -pointsize 20 -fill black -draw "text 5,50 '$date" keyring-$date.$visualsoftware.ps keyring-$date.$visualsoftware.pdf
 
 #convert keyring-$date.$visualsoftware.png keyring-$date.$visualsoftware.pdf
 
